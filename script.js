@@ -66,6 +66,7 @@ window.addEventListener('load', function(e) {
 
 // getting poetry authors list
 async function getAuthorList() {
+    try {
     const response = await fetch("https://poetrydb.org/author", {
         method: "GET",
     })
@@ -73,6 +74,11 @@ async function getAuthorList() {
     const authorsList = await response.json();
     // console.log(authorsList);
     renderAuthorsList(authorsList);
+    }
+    catch (error) {
+        console.log(error);
+        return alert("Error", error);
+    };
 };
 
 //Render the Array of authors list and show in select list
